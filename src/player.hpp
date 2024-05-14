@@ -5,10 +5,12 @@
 
 class Player {
 public:
-  Player(int x, int y, float width, float height, int speed)
+  Player(float x, float y, float width, float height, int speed)
       : x{x}, y{y}, width{width}, height{height}, speed{speed} {}
 
-  void Draw() { DrawRectangle(x, y, width, height, WHITE); }
+  void Draw() {
+    DrawRectangleRounded(Rectangle{x, y, width, height}, 0.8, 0, WHITE);
+  }
 
   void Move();
 
@@ -23,7 +25,7 @@ public:
   int get_y() const { return y; }
 
 protected:
-  int x, y;
+  float x, y;
   float width, height;
   int speed;
 };

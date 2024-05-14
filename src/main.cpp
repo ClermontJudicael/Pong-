@@ -20,6 +20,9 @@ int main(int argc, char *argv[]) {
 
     BeginDrawing();
 
+    // the center of the table
+    DrawCircle(s_width / 2, s_height / 2, 100, {195, 237, 236, 100});
+
     ball->update(s_width, s_height);
     ball->Draw();
     ball->check_collision(*player, s_width, s_height);
@@ -42,7 +45,7 @@ int main(int argc, char *argv[]) {
       ball->reset();
     }
 
-    ClearBackground(BLACK);
+    ClearBackground({148, 179, 229});
     DrawLine(s_width / 2, 0, s_width / 2, s_height, WHITE);
 
     // draw score
