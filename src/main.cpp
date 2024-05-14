@@ -1,6 +1,4 @@
-
 #include "player.hpp"
-#include <raylib.h>
 
 int main(int argc, char *argv[]) {
   const int s_width = 1000;
@@ -31,6 +29,8 @@ int main(int argc, char *argv[]) {
     player->Move();
     player->border_collision(s_width, s_height);
     paddle->Draw();
+    paddle->follow_ball(ball->get_y());
+    paddle->border_collision(s_width, s_height);
 
     // update score
     if (ball->ai_lost()) {

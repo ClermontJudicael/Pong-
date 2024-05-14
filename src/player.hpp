@@ -1,6 +1,7 @@
 #pragma once
 
 #include <raylib.h>
+#include <unistd.h>
 
 class Player {
 public:
@@ -21,7 +22,7 @@ public:
 
   int get_y() const { return y; }
 
-private:
+protected:
   int x, y;
   float width, height;
   int speed;
@@ -31,6 +32,14 @@ class Cpu_paddle : public Player {
 public:
   Cpu_paddle(int x, int y, float width, float height, int speed)
       : Player(x, y, width, height, speed) {}
+
+  void follow_ball(int ball_y) {
+    if (ball_y < y) {
+      y -= speed;
+    } else {
+      y += speed;
+    }
+  }
 };
 
 class Ball {
@@ -53,6 +62,7 @@ public:
   void reset() {
     x = GetScreenWidth() / 2;
     y = GetScreenHeight() / 2;
+    sleep(1);
   }
 
   int get_x() const { return x; }
